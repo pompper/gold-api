@@ -9,10 +9,9 @@ const app = express()
 app.set('view engine', 'ejs')
 app.use(express.static("public")) //Serv img  files
 
-// a = getGold();
-// let a = await getGold();
-
+app.addListener('connection', (socket) => console.log("Client Connect"))
 app.get('/', (request, response) => {
+  
 
   getGold(response);
     // fetch("https://www.thaigold.info/RealTimeDataV2/gtdata_.txt")
