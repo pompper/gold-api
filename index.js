@@ -26,6 +26,7 @@ async function getGold(response){
   barSell = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblBLSell");
   barSellPrice = await page.evaluate((barSell) => barSell.textContent, barSell);
   console.log(barSellPrice)
+   await browser.close();
   // barBuy = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblBLBuy");
   // barBuyPrice = await page.evaluate((barBuy) => barBuy.textContent, barBuy);
   // jewSell = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblOMSell");
