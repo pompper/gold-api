@@ -18,8 +18,8 @@ async function getGold(response){
   const URL = "https://www.goldtraders.or.th/default.aspx";
   const browser = await puppeteer.launch({
     headless: true,
-    args: ["--no-sandbox", "--use-gl=egl", "--disable-setuid-sandbox"],
-    executablePath: "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+    // args: ["--no-sandbox", "--use-gl=egl", "--disable-setuid-sandbox"],
+    // executablePath: "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
   });
   const page = await browser.newPage();
   await page.goto(URL);
