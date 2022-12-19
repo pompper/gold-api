@@ -17,7 +17,8 @@ app.get('/', (request, response) => {
 async function getGold(response){
   const URL = "https://www.goldtraders.or.th/default.aspx";
   const browser = await puppeteer.launch({
-    args: ['--no-sandbox']
+    headless: true,
+    args: ["--no-sandbox", "--use-gl=egl", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
   await page.goto(URL);
