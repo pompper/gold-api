@@ -8,10 +8,6 @@ let PORT = process.env.PORT || 3000
 app.set('view engine', 'ejs')
 app.use(express.static("public")) //Serv img/css  files
 
-// app.addListener("close", (socket) => console.log("Client Connect"));
-// app.addListener("connection", function(socket){
-//   console.log("connect")
-// })
 app.get('/', (request, response) => {
   
   getGold(response);  
@@ -19,18 +15,16 @@ app.get('/', (request, response) => {
 })
 
 async function getGold(response){
-  // const URL = "https://www.goldtraders.or.th/default.aspx";
-  // const browser = await puppeteer.launch({
-  //   args: [
-  //     '--no-sandbox',
-  //     '--disable-setuid-sandbox'
-  //   ]
-  // });
-  // const page = await browser.newPage();
-  // await page.goto(URL);
-  // //Assign Value
-  // barSell = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblBLSell");
-  // barSellPrice = await page.evaluate((barSell) => barSell.textContent, barSell);
+  const URL = "https://www.goldtraders.or.th/default.aspx";
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox']
+  });
+  const page = await browser.newPage();
+  await page.goto(URL);
+  //Assign Value
+  barSell = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblBLSell");
+  barSellPrice = await page.evaluate((barSell) => barSell.textContent, barSell);
+  console.log(barSellPrice)
   // barBuy = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblBLBuy");
   // barBuyPrice = await page.evaluate((barBuy) => barBuy.textContent, barBuy);
   // jewSell = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblOMSell");
