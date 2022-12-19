@@ -4,6 +4,8 @@ const express = require('express')
 const ejs = require('ejs')
 const app = express()
 
+let PORT = process.env.PORT || 5000
+
 app.set('view engine', 'ejs')
 app.use(express.static("public")) //Serv img/css  files
 
@@ -38,5 +40,5 @@ async function getGold(response){
        });  
 }
 
-app.listen(3000)
-console.log('Server started on port 3000')
+app.listen(PORT);
+console.log('Server started on port 5000')
