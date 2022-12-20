@@ -52,6 +52,7 @@ app.get("/", async (req, res) => {
     // red.send(await page.evaluate((barSell) => barSell.textContent, barSell))
     let today = new Date()
    let thMonth = ['มกราคม', 'กุมภาพันธ์','มีนาคม', 'เมษายน', 'พฤษภาคม','มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม','พฤศจิกายน', 'ธันวาคม']
+   date = today.getDate() + " " + thMonth[today.getMonth()] + " " + parseInt(today.getFullYear() + 543)
 // res.setHeader("Content-Type","text/html")
     // res.send("<h1>"+jewSellPrice+"</h1>");
     res.send(`
