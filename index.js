@@ -1,60 +1,73 @@
-const puppeteer = require("puppeteer");
-const express = require('express')
-const ejs = require('ejs')
-const app = express()
+const app = require("express")();
+const express = require("express");
+const ejs = require("ejs");
 
-let PORT = process.env.PORT || 3000
+let chrome = {};
+let puppeteer;
 
 app.set('view engine', 'ejs')
 app.use(express.static("public")) //Serv img/css  files
 
-app.get('/', (request, response) => {
-  
-  getGold(response);  
-  // response.send("OK")
-})
-
-async function getGold(response){
-  const URL = "https://www.goldtraders.or.th/default.aspx";
-  const browser = await puppeteer.launch({
-    headless: true,
-    // args: ["--no-sandbox", "--use-gl=egl", "--disable-setuid-sandbox"],
-    // executablePath: "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
-  });
-  const page = await browser.newPage();
-  await page.goto(URL);
-  //Assign Value
-  barSell = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblBLSell");
-  barSellPrice = await page.evaluate((barSell) => barSell.textContent, barSell);
-  console.log(barSellPrice)
-   await browser.close();
-  // barBuy = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblBLBuy");
-  // barBuyPrice = await page.evaluate((barBuy) => barBuy.textContent, barBuy);
-  // jewSell = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblOMSell");
-  // jewSellPrice = await page.evaluate((jewSell) => jewSell.textContent, jewSell);
-  // jewBuy = await page.waitForSelector("#DetailPlace_uc_goldprices1_lblOMBuy");
-  // jewBuyPrice = await page.evaluate((jewBuy) => jewBuy.textContent, jewBuy);
-   let today = new Date()
-   let thMonth = ['มกราคม', 'กุมภาพันธ์','มีนาคม', 'เมษายน', 'พฤษภาคม','มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม','พฤศจิกายน', 'ธันวาคม']
-  //    response.render("index", {
-  //      barSell: barSellPrice,
-  //      barBuy: barBuyPrice,
-  //      jewBuy: jewBuyPrice,
-  //      jewSell: jewSellPrice,
-  //      date: today.getDate() + " " + thMonth[today.getMonth()] + " " + parseInt(today.getFullYear() + 543),
-  //    });
-     response.render("index", {
-       barSell: 1,
-       barBuy: 2,
-       jewBuy: 3,
-       jewSell: 4,
-       date: today.getDate() + " " + thMonth[today.getMonth()] + " " + parseInt(today.getFullYear() + 543),
-     });
+if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+  chrome = require("chrome-aws-lambda");
+  puppeteer = require("puppeteer-core");
+} else {
+  puppeteer = require("puppeteer");
 }
 
-// app.listen(PORT);
-// console.log('Server started on port 80')
+app.get("/", async (req, res) => {
+  let options = {};
 
-app.listen(PORT, () => {
-  console.log("Start on port" + PORT)
-})
+  if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+    options = {
+      args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
+      defaultViewport: chrome.defaultViewport,
+      executablePath: await chrome.executablePath,
+      headless: true,
+      ignoreHTTPSErrors: true,
+    };
+  }
+
+  try {
+    let browser = await puppeteer.launch(options);
+
+    let page = await browser.newPage();
+    await page.goto("https://ทองคําราคา.com");
+    // const URL = "https://www.goldtraders.or.th/default.aspx";
+
+    //Assign Value
+    barSell = await page.waitForSelector("#rightCol .trline:nth-child(2) .em:nth-child(3)");
+    barSellPrice = await page.evaluate((barSell) => barSell.textContent, barSell);
+    barBuy = await page.waitForSelector("#rightCol .trline:nth-child(2) .em");
+    barBuyPrice = await page.evaluate((barBuy) => barBuy.textContent, barBuy);
+    jewBuy = await page.waitForSelector("#rightCol .trline:nth-child(3) .em");
+    jewBuyPrice = await page.evaluate((jewBuy) => jewBuy.textContent, jewBuy);
+    jewSell = await page.waitForSelector("#rightCol .trline:nth-child(3) .em:nth-child(3)");
+    jewSellPrice = await page.evaluate((jewSell) => jewSell.textContent, jewSell);
+    // console.log(barSellPrice)
+    // res.send(barSellPrice);
+
+    // res.send(await page.title());
+    // red.send(await page.evaluate((barSell) => barSell.textContent, barSell))
+    let today = new Date()
+   let thMonth = ['มกราคม', 'กุมภาพันธ์','มีนาคม', 'เมษายน', 'พฤษภาคม','มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม','พฤศจิกายน', 'ธันวาคม']
+
+    // res.send(await barSellPrice);
+    res.render("index", {
+      barSell: barSellPrice,
+      barBuy: barBuyPrice,
+      jewBuy: jewBuyPrice,
+      jewSell: jewSellPrice,
+      date:today.getDate() + " " + thMonth[today.getMonth()] + " " + parseInt(today.getFullYear() + 543),
+    });
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Server started");
+});
+
+module.exports = app;
