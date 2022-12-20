@@ -8,7 +8,7 @@ let puppeteer;
 
 app.set("view engine", "ejs");
 // app.use(express.static("public")) //Serv img/css  files
-app.use(express.static("public")); //Serv img/css  files
+// app.use(express.static("public")); //Serv img/css  files
 
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   chrome = require("chrome-aws-lambda");
@@ -71,7 +71,7 @@ app.get("/", async (req, res) => {
     // res.send(await jewSellPrice);
     // res.sendFile("index.html", { root: path.join(__dirname, "public") });
     // console.log(res)
-    res.setHeader("Content-Type", "text/html");
+    // res.setHeader("Content-Type", "text/html");
     res.render("about");
 
     // res.render("index", {
