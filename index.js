@@ -68,23 +68,24 @@ app.get("/", async (req, res) => {
     ];
 
     // res.send(await jewSellPrice);
-    res.setHeader("Content-Type", "text/html");
-    res.render("index", {
-      //   barSell: barSellPrice,
-      //   barBuy: barBuyPrice,
-      //   jewBuy: jewBuyPrice,
-      //   jewSell: jewSellPrice,
-      barSell: 1,
-      barBuy: 2,
-      jewBuy: 3,
-      jewSell: 4,
-      date:
-        today.getDate() +
-        " " +
-        thMonth[today.getMonth()] +
-        " " +
-        parseInt(today.getFullYear() + 543),
-    });
+    res.sendFile("index.html", { root: path.join(__dirname, "public") });
+    // res.setHeader("Content-Type", "text/html");
+    // res.render("index", {
+    //   //   barSell: barSellPrice,
+    //   //   barBuy: barBuyPrice,
+    //   //   jewBuy: jewBuyPrice,
+    //   //   jewSell: jewSellPrice,
+    //   barSell: 1,
+    //   barBuy: 2,
+    //   jewBuy: 3,
+    //   jewSell: 4,
+    //   date:
+    //     today.getDate() +
+    //     " " +
+    //     thMonth[today.getMonth()] +
+    //     " " +
+    //     parseInt(today.getFullYear() + 543),
+    // });
   } catch (err) {
     console.error(err);
     return null;
