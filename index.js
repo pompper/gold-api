@@ -1,12 +1,13 @@
 const app = require("express")();
-// const express = require("express");
-// const ejs = require("ejs");
+const express = require("express");
+const ejs = require("ejs");
 
 let chrome = {};
 let puppeteer;
 
-// app.set('view engine', 'ejs')
+app.set('view engine', 'ejs')
 // app.use(express.static("public")) //Serv img/css  files
+app.use(express.static("public")); //Serv img/css  files
 
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   chrome = require("chrome-aws-lambda");
@@ -52,14 +53,14 @@ app.get("/", async (req, res) => {
     let today = new Date()
    let thMonth = ['มกราคม', 'กุมภาพันธ์','มีนาคม', 'เมษายน', 'พฤษภาคม','มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม','พฤศจิกายน', 'ธันวาคม']
 
-    res.send(await jewSellPrice);
-    // res.render("index", {
-    //   barSell: barSellPrice,
-    //   barBuy: barBuyPrice,
-    //   jewBuy: jewBuyPrice,
-    //   jewSell: jewSellPrice,
-    //   date:today.getDate() + " " + thMonth[today.getMonth()] + " " + parseInt(today.getFullYear() + 543),
-    // });
+    // res.send(await jewSellPrice);
+    res.render("index", {
+      barSell: barSellPrice,
+      barBuy: barBuyPrice,
+      jewBuy: jewBuyPrice,
+      jewSell: jewSellPrice,
+      date:today.getDate() + " " + thMonth[today.getMonth()] + " " + parseInt(today.getFullYear() + 543),
+    });
   } catch (err) {
     console.error(err);
     return null;
