@@ -1,5 +1,5 @@
 const app = require("express")();
-const express = require("express");
+// const express = require("express");
 // const ejs = require("ejs");
 
 let chrome = {};
@@ -52,8 +52,8 @@ app.get("/", async (req, res) => {
     // red.send(await page.evaluate((barSell) => barSell.textContent, barSell))
     let today = new Date()
    let thMonth = ['มกราคม', 'กุมภาพันธ์','มีนาคม', 'เมษายน', 'พฤษภาคม','มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม','พฤศจิกายน', 'ธันวาคม']
-res.setHeader("Content-Type","text/html")
-    res.send(await jewSellPrice);
+// res.setHeader("Content-Type","text/html")
+    res.send("<h1>"+jewSellPrice+"</h1>");
     // res.render("index", {
     // //   barSell: barSellPrice,
     // //   barBuy: barBuyPrice,
