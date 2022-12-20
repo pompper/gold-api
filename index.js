@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const ejs = require("ejs");
+const path = require("path")
 
 let chrome = {};
 let puppeteer;
@@ -68,7 +69,9 @@ app.get("/", async (req, res) => {
     ];
 
     // res.send(await jewSellPrice);
-    res.sendFile("index.html", { root: path.join(__dirname, "public") });
+    // res.sendFile("index.html", { root: path.join(__dirname, "public") });
+    // console.log(res)
+    res.render('about')
     // res.setHeader("Content-Type", "text/html");
     // res.render("index", {
     //   //   barSell: barSellPrice,
@@ -86,6 +89,7 @@ app.get("/", async (req, res) => {
     //     " " +
     //     parseInt(today.getFullYear() + 543),
     // });
+    res.end()
   } catch (err) {
     console.error(err);
     return null;
