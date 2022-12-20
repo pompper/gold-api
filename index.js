@@ -53,14 +53,14 @@ app.get("/", async (req, res) => {
     let today = new Date()
    let thMonth = ['มกราคม', 'กุมภาพันธ์','มีนาคม', 'เมษายน', 'พฤษภาคม','มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม','พฤศจิกายน', 'ธันวาคม']
 
-    // res.send(await jewSellPrice);
-    res.render("index", {
-      barSell: barSellPrice,
-      barBuy: barBuyPrice,
-      jewBuy: jewBuyPrice,
-      jewSell: jewSellPrice,
-      date:today.getDate() + " " + thMonth[today.getMonth()] + " " + parseInt(today.getFullYear() + 543),
-    });
+    res.send(await jewSellPrice);
+    // res.render("index", {
+    //   barSell: barSellPrice,
+    //   barBuy: barBuyPrice,
+    //   jewBuy: jewBuyPrice,
+    //   jewSell: jewSellPrice,
+    //   date:today.getDate() + " " + thMonth[today.getMonth()] + " " + parseInt(today.getFullYear() + 543),
+    // });
   } catch (err) {
     console.error(err);
     return null;
