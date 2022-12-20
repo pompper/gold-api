@@ -65,16 +65,16 @@ app.get("/", async (req, res) => {
     <!-- Canvas -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <main>
         <div id="capture">
-            <span id="date"><%= date %></span>
+            <span id="date">${date}</span>
             <span id="custom" contenteditable="true">25,300</span>
             <span><%= barSell %></span><br>
             <span id="barbuy"><%= barBuy %></span><br>
-            <span id="jewsell"><%= jewSell %></span> <br>
+            <span id="jewsell">${jewSellPrice}</span> <br>
             <span id="jewbuy"><%= jewBuy %> </span><br>
         </div>
         <p>กด Save แล้ว คลิกขวาที่ รูปภาพ แล้วเซฟอีกครั้ง</p>
