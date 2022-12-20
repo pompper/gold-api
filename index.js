@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
-const ejs = require("ejs");
-const path = require("path")
+// const ejs = require("ejs");
+// const path = require("path")
 
 let chrome = {};
 let puppeteer;
 
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 // app.use(express.static("public")) //Serv img/css  files
 // app.use(express.static("public")); //Serv img/css  files
 
@@ -72,7 +72,7 @@ app.get("/", async (req, res) => {
     // res.sendFile("index.html", { root: path.join(__dirname, "public") });
     // console.log(res)
     // res.setHeader("Content-Type", "text/html");
-    res.render("about");
+    res.render("index");
 
     // res.render("index", {
     //   //   barSell: barSellPrice,
