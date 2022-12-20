@@ -70,13 +70,15 @@ app.get("/", async (req, res) => {
 </head>
 <body>
     <main>
+
         <div id="capture">
+<img src="https://77-house.com/gold/images/gold.jpg">
             <span id="date">${date}</span>
             <span id="custom" contenteditable="true">25,300</span>
-            <span><%= barSell %></span><br>
-            <span id="barbuy"><%= barBuy %></span><br>
+            <span>${barSellPrice}</span><br>
+            <span id="barbuy">${barBuyPrice}</span><br>
             <span id="jewsell">${jewSellPrice}</span> <br>
-            <span id="jewbuy"><%= jewBuy %> </span><br>
+            <span id="jewbuy">${jewBuyPrice} </span><br>
         </div>
         <p>กด Save แล้ว คลิกขวาที่ รูปภาพ แล้วเซฟอีกครั้ง</p>
         <button onclick="capture()">Save</button>
