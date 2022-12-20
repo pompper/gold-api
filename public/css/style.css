@@ -1,11 +1,11 @@
   @font-face {
       font-family: 'boontook';
-      src: url('https://77-house.com/gold/fonts/BoonTookMon-Regular.ttf');
+      src: url('../fonts/BoonTookMon-Regular.ttf');
 
   }
 
   div {
-      background: url("https://77-house.com/gold/images/gold.jpg");
+      background: url("../images/gold.jpg");
       width: 1250px;
       height: 700px;
       padding-top: 287px;

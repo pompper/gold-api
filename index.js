@@ -1,4 +1,5 @@
 const app = require("express")();
+var cors = require("cors");
 const express = require("express");
 // const ejs = require("ejs");
 
@@ -6,7 +7,8 @@ let chrome = {};
 let puppeteer;
 
 // app.set('view engine', 'ejs')
-app.use(express.static("public")) //Serv img/css  files
+app.use(express.static(__dirname + "/public/")) //Serv img/css  files
+app.use(cors())
 // app.use(express.static("public")); //Serv img/css  files
 
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
@@ -66,13 +68,12 @@ app.get("/", async (req, res) => {
     <!-- Canvas -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="https://77-house.com/gold/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <main>
 
         <div id="capture">
-<img src="https://77-house.com/gold/images/gold.jpg">
             <span id="date">${date}</span>
             <span id="custom" contenteditable="true">25,300</span>
             <span>${barSellPrice}</span><br>
@@ -87,8 +88,11 @@ app.get("/", async (req, res) => {
 <script>
     function capture(){
         html2canvas(document.querySelector("#capture")).then(canvas => {
-            document.getElementsByTagName('body')[0].appendChild(canvas)
-            document.getElementsByTagName('main')[0].remove()
+             const image = canvas.toDataURL('png');
+    const a = document.createElement('a');
+    a.setAttribute('download', 'certificate.png');
+    a.setAttribute('href', image);
+    a.click();
         });
     }
 </script>
