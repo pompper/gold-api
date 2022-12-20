@@ -1,12 +1,11 @@
+const app = require("express")();
 const express = require("express");
-const app = express();
 // const ejs = require("ejs");
-// const path = require("path")
 
 let chrome = {};
 let puppeteer;
 
-// app.set("view engine", "ejs");
+// app.set('view engine', 'ejs')
 // app.use(express.static("public")) //Serv img/css  files
 // app.use(express.static("public")); //Serv img/css  files
 
@@ -31,10 +30,10 @@ app.get("/", async (req, res) => {
   }
 
   try {
-    // let browser = await puppeteer.launch(options);
-    // let page = await browser.newPage();
-    // await page.goto("https://ทองคําราคา.com");
+    let browser = await puppeteer.launch(options);
 
+    let page = await browser.newPage();
+    await page.goto("https://ทองคําราคา.com");
     // const URL = "https://www.goldtraders.or.th/default.aspx";
 
     //Assign Value
@@ -44,53 +43,28 @@ app.get("/", async (req, res) => {
     // barBuyPrice = await page.evaluate((barBuy) => barBuy.textContent, barBuy);
     // jewBuy = await page.waitForSelector("#rightCol .trline:nth-child(3) .em");
     // jewBuyPrice = await page.evaluate((jewBuy) => jewBuy.textContent, jewBuy);
-    // jewSell = await page.waitForSelector("#rightCol .trline:nth-child(3) .em:nth-child(3)");
-    // jewSellPrice = await page.evaluate((jewSell) => jewSell.textContent, jewSell);
-
+    jewSell = await page.waitForSelector("#rightCol .trline:nth-child(3) .em:nth-child(3)");
+    jewSellPrice = await page.evaluate((jewSell) => jewSell.textContent, jewSell);
     // console.log(barSellPrice)
     // res.send(barSellPrice);
 
     // res.send(await page.title());
     // red.send(await page.evaluate((barSell) => barSell.textContent, barSell))
-    let today = new Date();
-    let thMonth = [
-      "มกราคม",
-      "กุมภาพันธ์",
-      "มีนาคม",
-      "เมษายน",
-      "พฤษภาคม",
-      "มิถุนายน",
-      "กรกฏาคม",
-      "สิงหาคม",
-      "กันยายน",
-      "ตุลาคม",
-      "พฤศจิกายน",
-      "ธันวาคม",
-    ];
-
-    // res.send(await jewSellPrice);
-    // res.sendFile("index.html", { root: path.join(__dirname, "public") });
-    // console.log(res)
-    // res.setHeader("Content-Type", "text/html");
-    res.render("index");
-
+    let today = new Date()
+   let thMonth = ['มกราคม', 'กุมภาพันธ์','มีนาคม', 'เมษายน', 'พฤษภาคม','มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม','พฤศจิกายน', 'ธันวาคม']
+res.setHeader("Content-Type","text/html")
+    res.send(await jewSellPrice);
     // res.render("index", {
-    //   //   barSell: barSellPrice,
-    //   //   barBuy: barBuyPrice,
-    //   //   jewBuy: jewBuyPrice,
-    //   //   jewSell: jewSellPrice,
-    //   barSell: 1,
+    // //   barSell: barSellPrice,
+    // //   barBuy: barBuyPrice,
+    // //   jewBuy: jewBuyPrice,
+    // //   jewSell: jewSellPrice,
+    //     barSell: 1,
     //   barBuy: 2,
     //   jewBuy: 3,
     //   jewSell: 4,
-    //   date:
-    //     today.getDate() +
-    //     " " +
-    //     thMonth[today.getMonth()] +
-    //     " " +
-    //     parseInt(today.getFullYear() + 543),
+    //   date:today.getDate() + " " + thMonth[today.getMonth()] + " " + parseInt(today.getFullYear() + 543),
     // });
-    // res.end()
   } catch (err) {
     console.error(err);
     return null;
