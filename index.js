@@ -1,11 +1,11 @@
-const app = require("express")();
 const express = require("express");
+const app = express();
 const ejs = require("ejs");
 
 let chrome = {};
 let puppeteer;
 
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs");
 // app.use(express.static("public")) //Serv img/css  files
 app.use(express.static("public")); //Serv img/css  files
 
@@ -51,20 +51,38 @@ app.get("/", async (req, res) => {
 
     // res.send(await page.title());
     // red.send(await page.evaluate((barSell) => barSell.textContent, barSell))
-    let today = new Date()
-   let thMonth = ['มกราคม', 'กุมภาพันธ์','มีนาคม', 'เมษายน', 'พฤษภาคม','มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม','พฤศจิกายน', 'ธันวาคม']
+    let today = new Date();
+    let thMonth = [
+      "มกราคม",
+      "กุมภาพันธ์",
+      "มีนาคม",
+      "เมษายน",
+      "พฤษภาคม",
+      "มิถุนายน",
+      "กรกฏาคม",
+      "สิงหาคม",
+      "กันยายน",
+      "ตุลาคม",
+      "พฤศจิกายน",
+      "ธันวาคม",
+    ];
 
     // res.send(await jewSellPrice);
     res.render("index", {
-    //   barSell: barSellPrice,
-    //   barBuy: barBuyPrice,
-    //   jewBuy: jewBuyPrice,
-    //   jewSell: jewSellPrice,
-        barSell: 1,
+      //   barSell: barSellPrice,
+      //   barBuy: barBuyPrice,
+      //   jewBuy: jewBuyPrice,
+      //   jewSell: jewSellPrice,
+      barSell: 1,
       barBuy: 2,
       jewBuy: 3,
       jewSell: 4,
-      date:today.getDate() + " " + thMonth[today.getMonth()] + " " + parseInt(today.getFullYear() + 543),
+      date:
+        today.getDate() +
+        " " +
+        thMonth[today.getMonth()] +
+        " " +
+        parseInt(today.getFullYear() + 543),
     });
   } catch (err) {
     console.error(err);
