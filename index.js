@@ -66,7 +66,7 @@ app.get("/", async (req, res) => {
     <!-- Canvas -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://77-house.com/gold/css/style.css">
 </head>
 <body>
     <main>
