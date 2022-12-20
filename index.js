@@ -37,12 +37,12 @@ app.get("/", async (req, res) => {
     // const URL = "https://www.goldtraders.or.th/default.aspx";
 
     //Assign Value
-    // barSell = await page.waitForSelector("#rightCol .trline:nth-child(2) .em:nth-child(3)");
-    // barSellPrice = await page.evaluate((barSell) => barSell.textContent, barSell);
-    // barBuy = await page.waitForSelector("#rightCol .trline:nth-child(2) .em");
-    // barBuyPrice = await page.evaluate((barBuy) => barBuy.textContent, barBuy);
-    // jewBuy = await page.waitForSelector("#rightCol .trline:nth-child(3) .em");
-    // jewBuyPrice = await page.evaluate((jewBuy) => jewBuy.textContent, jewBuy);
+    barSell = await page.waitForSelector("#rightCol .trline:nth-child(2) .em:nth-child(3)");
+    barSellPrice = await page.evaluate((barSell) => barSell.textContent, barSell);
+    barBuy = await page.waitForSelector("#rightCol .trline:nth-child(2) .em");
+    barBuyPrice = await page.evaluate((barBuy) => barBuy.textContent, barBuy);
+    jewBuy = await page.waitForSelector("#rightCol .trline:nth-child(3) .em");
+    jewBuyPrice = await page.evaluate((jewBuy) => jewBuy.textContent, jewBuy);
     jewSell = await page.waitForSelector("#rightCol .trline:nth-child(3) .em:nth-child(3)");
     jewSellPrice = await page.evaluate((jewSell) => jewSell.textContent, jewSell);
     // console.log(barSellPrice)
