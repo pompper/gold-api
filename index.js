@@ -68,6 +68,7 @@ app.get("/", async (req, res) => {
     ];
 
     // res.send(await jewSellPrice);
+    res.setHeader("Content-Type", "text/html");
     res.render("index", {
       //   barSell: barSellPrice,
       //   barBuy: barBuyPrice,
