@@ -71,8 +71,9 @@ app.get("/", async (req, res) => {
     // res.send(await jewSellPrice);
     // res.sendFile("index.html", { root: path.join(__dirname, "public") });
     // console.log(res)
-    res.render('about')
-    // res.setHeader("Content-Type", "text/html");
+    res.setHeader("Content-Type", "text/html");
+    res.render("about");
+
     // res.render("index", {
     //   //   barSell: barSellPrice,
     //   //   barBuy: barBuyPrice,
@@ -89,7 +90,7 @@ app.get("/", async (req, res) => {
     //     " " +
     //     parseInt(today.getFullYear() + 543),
     // });
-    res.end()
+    // res.end()
   } catch (err) {
     console.error(err);
     return null;
