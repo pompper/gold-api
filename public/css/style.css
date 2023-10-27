@@ -1,48 +1,110 @@
-  @font-face {
-      font-family: 'boontook';
-      src: url('../fonts/BoonTookMon-Regular.ttf');
+@font-face {
+  font-family: "boontook";
+  src: url("../fonts/BoonTookMon-Regular.ttf");
+}
+main {
+  display: flex;
+}
 
-  }
+div {
+  background: url("../images/template.jpg");
+  width: 1080px;
+  height: 1080px;
+  box-sizing: border-box;
+}
 
-  div {
-      background: url("../images/gold.jpg");
-      width: 1250px;
-      height: 700px;
-      padding-top: 287px;
-      box-sizing: border-box;
-  }
+span {
+  font-size: 2em;
+  position: absolute;
+  white-space: pre;
+  font-family: boontook;
+}
+span#date {
+  top: 281px;
+  left: 432px;
+  color: black;
+  font-size: 3em;
+  font-family: "Sarabun";
+}
+span#barbuy {
+  top: 614px;
+  left: 442px;
+}
+span#barsell {
+  top: 614px;
+  left: 780px;
+}
+span#jewbuy {
+  top: 750px;
+  left: 442px;
+}
+span#jewsell {
+  top: 750px;
+  left: 780px;
+}
+span#barcustom {
+  top: 861px;
+  left: 336px;
+  font-size: 2.7em;
+  font-family: boontook;
+  color: #3ABBEE;
+}
+span#jewcustom {
+  top: 863px;
+  left: 856px;
+  font-size: 2.7em;
+  font-family: boontook;
+  color: #3ABBEE;
+}
+span#adjustblock {
+  display: flex;
+  width: 120px;
+  height: 45px;
+  background: pink;
+  top: 427px;
+  left: 765px;
+  justify-content: space-around;
+}
+span#adjust {
+  top: 347px;
+  left: 750px;
+  font-size: 1em;
+  position: relative;
+  display: block;
+  width: 140px;
+  text-align: center;
+}
+span#direction {
+  font-size: 1em;
+  position: relative;
+}
 
-  span {
-      color: white;
-      position: relative;
-      left: 74%;
-      font-family: 'boontook';
-      font-size: 3em;
-      color: #F4DB6D
-  }
+.content {
+  padding: 1rem;
+}
+.content p {
+  font-family: Sarabun;
+}
 
-  span#barbuy {
-      top: 25px
-  }
+#download {
+  background: #3ABBEE;
+  border: 2px solid #3ABBEE;
+  width: 100%;
+  padding: 0px 60px;
+  font-size: 2em;
+  font-family: boontook;
+  background: #3ABBEE;
+  font-size: 2em;
+  border-radius: 66px;
+  box-shadow: 1px 2px 3px silver;
+  cursor: pointer;
+  color: white;
+}
+#download:hover {
+  background: white;
+  color: #3ABBEE;
+  transition: 0.3s;
+  border: 2px solid #3ABBEE;
+}
 
-  span#jewsell {
-      top: 89px
-  }
-
-  span#jewbuy {
-      top: 107px
-  }
-
-  span#custom {
-      left: 129px;
-      position: absolute;
-      font-size: 7em;
-      top: 220px
-  }
-
-  span#date {
-      position: absolute;
-      top: 108px;
-      left: 830px;
-      white-space: pre;
-  }
+/*# sourceMappingURL=style.css.map */

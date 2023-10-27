@@ -1,0 +1,110 @@
+// $customcolor: black
+$customcolor: #3ABBEE
+@font-face
+    font-family: 'boontook'
+    src: url('../fonts/BoonTookMon-Regular.ttf')
+
+main
+    display: flex
+    // justify-content: center
+div
+    background: url("../images/template.jpg")
+    width: 1080px
+    height: 1080px
+    box-sizing: border-box
+    // transform: scale(0.5)  
+
+span
+    // color: #EAB952
+    // color: #555
+    font-size: 2em
+    position: absolute
+    white-space: pre
+    font-family: boontook
+    // font-family: Sarabun
+    &#date //Date ex 26 October 2023
+        top: 281px
+        left: 432px
+        color: black
+        font-size: 3em
+        font-family: 'Sarabun'
+        // font-family: boontook
+
+    &#barbuy
+        top: 614px
+        left: 442px
+    &#barsell
+        top: 614px
+        left: 780px
+    &#jewbuy 
+        top: 750px
+        left: 442px
+    &#jewsell
+        top: 750px
+        left: 780px
+
+    &#barcustom
+        top: 861px
+        left: 336px
+        font-size: 2.7em
+        font-family: boontook
+        color: $customcolor
+    &#jewcustom
+        top: 863px
+        left: 856px
+        font-size: 2.7em
+        font-family: boontook
+        color: $customcolor
+
+    &#adjustblock
+        display: flex
+        width: 120px
+        height: 45px
+        background: pink
+        top: 427px
+        left: 765px
+        justify-content: space-around
+
+    &#adjust
+        top: 347px
+        left: 750px
+        // font-family: Sarabun
+        font-size: 1em
+        position: relative
+        display: block
+        width: 140px
+        // background: pink
+        text-align: center
+        // color: green
+    
+    &#direction
+        // top: 426px
+        // left: 830px
+        font-size: 1em
+        position: relative
+           // font-family: Sarabun
+        // color: red
+
+.content
+    padding: 1rem
+    p
+        font-family: Sarabun
+#download
+    background: $customcolor
+    border: 2px solid $customcolor
+    // margin: 2rem
+    width: 100%
+    padding: 0px 60px
+    font-size:2em
+    font-family: boontook
+    background: $customcolor
+    font-size: 2em
+    border-radius: 66px
+    box-shadow: 1px 2px 3px silver
+    cursor: pointer
+    color: white
+    &:hover
+        background: white
+        color: $customcolor
+        transition: 0.3s
+        border: 2px solid $customcolor

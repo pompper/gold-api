@@ -3,34 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <title>Gold API by 7/7 House</title>
     <!-- Canvas -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Google Font -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400&family=Sarabun:wght@400;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <main>
-        <div id="capture">
-            <span id="date"><%= date %></span>
-            <span id="custom" contenteditable="true">25,300</span>
-            <span><%= barSell %></span><br>
-            <span id="barbuy"><%= barBuy %></span><br>
-            <span id="jewsell"><%= jewSell %></span> <br>
-            <span id="jewbuy"><%= jewBuy %> </span><br>
-        </div>
-        <p>กด Save แล้ว คลิกขวาที่ รูปภาพ แล้วเซฟอีกครั้ง</p>
-        <button onclick="capture()">Save</button>
+        <section>
+            <div id="capture">
+                <span id="date"><%= date %></span>
+                <span id="barbuy"><%= barBuy %></span><br>
+                <span id="barsell"><%= barSell %></span><br>
+                <span id="jewsell"><%= jewSell %></span> <br>
+                <span id="jewbuy"><%= jewBuy %> </span><br> 
+                <span id="barcustom" contenteditable="true">25,300</span>
+                <span id="jewcustom" contenteditable="true">25,300</span>
+                <!-- <span id="adjustblock"> -->
+                    <!-- <span id="direction">ขึ้น</span> -->
+                    <span id="adjust"><%- adjust %></span>
+                <!-- </span> -->
+            </div>
+        </section>
+        <section class="content">
+                <h3 style="font-family: Sarabun;">Gold Price Generator by 7/7 House</h3>
+                <p>
+                <b>วิธีใช้งาน</b><br>
+                - คลิกที่ปุ่ม บันทึก เพื่อ Download รูปภาพ <br>
+                - สามารถแก้ไขราคารับจำนำได้ โดยการคลิกที่ตัวเลข และกดบันทึกอีกครั้ง<br>
+                <br>
+                <b>Updated Functions</b><br>
+                - เปลี่ยน Template ใหม่ 
+                - ดึงราคาจากสมาคมค้าทองคำ (https://www.goldtraders.or.th/UpdatePriceList.aspx)
+                - ตัวแสดงผลเทียบราคาขึ้น /ลง<br>
+
+                <br><br>
+                <b>Developer:</b> Natatum Khumhom<br>
+                <b>Facebook:</b> Born Scream<br>
+                <b>Website:</b> <a href="https://www.77-house.com" target="_blank">www.77-house.com</a>
+                </p>
+
+                <p>Last Updated: 27 Oct 2023</p> <br><br>
+
+                <button onclick="capture()" id="download">บันทึก</button>
+        </section>
     </main>
     <section></section>
 <script>
     function capture(){
         html2canvas(document.querySelector("#capture")).then(canvas => {
-            document.getElementsByTagName('body')[0].appendChild(canvas)
-            document.getElementsByTagName('main')[0].remove()
+            // document.getElementsByTagName('body')[0].appendChild(canvas)
+            // document.getElementsByTagName('main')[0].remove()
+            const image = canvas.toDataURL('image/png')
+            const a = document.createElement('a')
+            a.setAttribute('download', 'my-image.png')
+            a.setAttribute('href', image)
+            a.click()
+            // canvas.remove()
         });
     }
+
+   
+
+    
+    // setTimeout(compare, 2000)
+    // compare()
+    //  const btn = document.querySelector('#btn')
+    // btn.addEventListener('click', capture)
 </script>
 </body>
 </html>

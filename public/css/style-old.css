@@ -1,0 +1,51 @@
+  @font-face {
+      font-family: 'boontook';
+      src: url('../fonts/BoonTookMon-Regular.ttf');
+
+  }
+
+  div {
+      /* background: url("../images/gold.jpg");
+      width: 1250px;
+      height: 700px; */
+      background: url("../images/template.jpg");
+      width: 1080px;
+      height: 1080px;
+      padding-top: 287px;
+      box-sizing: border-box;
+  }
+
+  span {
+      color: white;
+      position: relative;
+      left: 74%;
+      font-family: 'boontook';
+      font-size: 3em;
+      color: #F4DB6D
+  }
+
+  span#barbuy {
+      top: 25px
+  }
+
+  span#jewsell {
+      top: 89px
+  }
+
+  span#jewbuy {
+      top: 107px
+  }
+
+  span#custom {
+      left: 129px;
+      position: absolute;
+      font-size: 7em;
+      top: 220px
+  }
+
+  span#date {
+      position: absolute;
+      top: 108px;
+      left: 830px;
+      white-space: pre;
+  }

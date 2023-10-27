@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx nodemon index",
+    "sass": "sass ./public/css/style.sass ./public/css/style.css -w"
   },
   "keywords": [],
   "author": "",
